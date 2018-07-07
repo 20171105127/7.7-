@@ -50,4 +50,43 @@ int main()
         
         fclose(fp1);
     }
+    j=i;
+    int max[100],min[100];
+    
+    for(i=0;i<j;i++)
+    {
+        max[i]=min[i]=s[i].judge1;
+    }
+    j=i;
+    
+    for(i=0;i<j;i++)
+    {
+        if(s[i].judge2>max[i])
+            max[i]=s[i].judge2;
+        if(s[i].judge3>max[i])
+            max[i]=s[i].judge3;
+        if(s[i].judge4>max[i])
+            max[i]=s[i].judge4;
+        if(s[i].judge5>max[i])
+            max[i]=s[i].judge5;
+    }
+    j=i;
+    
+    for(i=0;i<j;i++)
+    {
+        if(s[i].judge2<min[i])
+            min[i]=s[i].judge2;
+        if(s[i].judge3<min[i])
+            min[i]=s[i].judge3;
+        if(s[i].judge4<min[i])
+            min[i]=s[i].judge4;
+        if(s[i].judge5<min[i])
+            min[i]=s[i].judge5;
+    }
+    j=i;
+    
+    for(i=0;i<j;i++)
+    {
+        s[i].score=(s[i].judge1+s[i].judge2+s[i].judge3+s[i].judge4+s[i].judge5-max[i]-min[i])/3;
+    }
     
