@@ -6,8 +6,8 @@ struct student
     char name[10];    //名字
     char sex[10];     //性别
     int dateofbirt;   //出生日期
-    char class1[15];   //班级
-    char phoneNo[15];   //电话号
+    char class1[10];   //班级
+    char phoneNo[10];   //电话号
     int judge1;
     int judge2;
     int judge3;
@@ -20,28 +20,28 @@ int main()
     struct student s[100];               //定义结构数组
     FILE *fp1,*fp2;                 //俩个文件指针
     int i=0,j;
-    fp1 =fopen("/Users/S20171105127/Desktop/student1.csv","r");
-    if(fp1==NULL)
+    fp1 =fopen("/Users/S20171105127/Desktop/student1.csv","r");          //读取文件
+    if(fp1==NULL)         //文件为空
     {
         printf("找不到文件\n");
         exit(-1);
     }
     else
     {
-        fscanf(fp1,"%*[^\n]%*c");
-        while(!feof(fp1))
+        fscanf(fp1,"%*[^\n]%*c");            //换行
+        while(!feof(fp1))              //feof在fp1指向的文件结束时输出0
         {
-            fscanf(fp1,"%d",&s[i].numbers);
-            fscanf(fp1,"%[^,]",&s[i].name);
-            fscanf(fp1,"%[^,]",&s[i].sex);
-            fscanf(fp1,"%d",&s[i].dateofbirt);
-            fscanf(fp1,"%[^,]",&s[i].class1);
-            fscanf(fp1,"%[^,]",&s[i].phoneNo);
-            fscanf(fp1,"%d",&s[i].judge1);
-            fscanf(fp1,"%d",&s[i].judge2);
-            fscanf(fp1,"%d",&s[i].judge3);
-            fscanf(fp1,"%d",&s[i].judge4);
-            fscanf(fp1,"%d",&s[i].judge5);
+            fscanf(fp1,"%d,",&s[i].numbers);
+            fscanf(fp1,"%[^,],",s[i].name);
+            fscanf(fp1,"%[^,],",s[i].sex);
+            fscanf(fp1,"%d,",&s[i].dateofbirt);
+            fscanf(fp1,"%[^,],",s[i].class1);
+            fscanf(fp1,"%[^,],",s[i].phoneNo);
+            fscanf(fp1,"%d,",&s[i].judge1);
+            fscanf(fp1,"%d,",&s[i].judge2);
+            fscanf(fp1,"%d,",&s[i].judge3);
+            fscanf(fp1,"%d,",&s[i].judge4);
+            fscanf(fp1,"%d,",&s[i].judge5);
             i++;
         }
         j=i;
@@ -65,7 +65,7 @@ int main()
     int max[100],min[100];
     for(i=0;i<j;i++)
     {
-        max[i]=min[i]=s[i].judge1;
+        max[i]=min[i]=s[i].judge1;          //最大值给第一个数
     }
     j=i;
     for(i=0;i<j;i++)
@@ -98,33 +98,33 @@ int main()
     }
     j=i;
     i=0;
-    fp2=fopen("/Users/S20171105127/Desktop/student2.csv","w");
-    fprintf(fp2,"numbers");
-    fprintf(fp2,"name");
-    fprintf(fp2,"sex");
-    fprintf(fp2,"dateofbirth");
-    fprintf(fp2,"class");
-    fprintf(fp2,"phoneNo");
-    fprintf(fp2,"judge1");
-    fprintf(fp2,"judge2");
-    fprintf(fp2,"judge3");
-    fprintf(fp2,"judge4");
-    fprintf(fp2,"judge5");
+    fp2=fopen("/Users/S20171105127/Desktop/student2.csv","w");         //写入文件
+    fprintf(fp2,"numbers,");
+    fprintf(fp2,"name,");
+    fprintf(fp2,"sex,");
+    fprintf(fp2,"dateofbirth,");
+    fprintf(fp2,"class,");
+    fprintf(fp2,"phoneNo,");
+    fprintf(fp2,"judge1,");
+    fprintf(fp2,"judge2,");
+    fprintf(fp2,"judge3,");
+    fprintf(fp2,"judge4,");
+    fprintf(fp2,"judge5,");
     fprintf(fp2,"score\n");
     while(i<j)
     {
-        fprintf(fp2,"%d",s[i].numbers);
-        fprintf(fp2,"%s",s[i].name);
-        fprintf(fp2,"%s",s[i].sex);
-        fprintf(fp2,"%d",s[i].dateofbirt);
-        fprintf(fp2,"%s",s[i].class1);
-        fprintf(fp2,"%s",s[i].phoneNo);
-        fprintf(fp2,"%d",s[i].judge1);
-        fprintf(fp2,"%d",s[i].judge2);
-        fprintf(fp2,"%d",s[i].judge3);
-        fprintf(fp2,"%d",s[i].judge4);
-        fprintf(fp2,"%d",s[i].judge5);
-        fprintf(fp2,"%d",s[i].score);
+        fprintf(fp2,"%d,",s[i].numbers);
+        fprintf(fp2,"%s,",s[i].name);
+        fprintf(fp2,"%s,",s[i].sex);
+        fprintf(fp2,"%d,",s[i].dateofbirt);
+        fprintf(fp2,"%s,",s[i].class1);
+        fprintf(fp2,"%s,",s[i].phoneNo);
+        fprintf(fp2,"%d,",s[i].judge1);
+        fprintf(fp2,"%d,",s[i].judge2);
+        fprintf(fp2,"%d,",s[i].judge3);
+        fprintf(fp2,"%d,",s[i].judge4);
+        fprintf(fp2,"%d,",s[i].judge5);
+        fprintf(fp2,"%d\n",s[i].score);
         i++;
     }
     fclose(fp2);               //关闭文件
